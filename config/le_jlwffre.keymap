@@ -138,7 +138,7 @@
             &kp ESC     &kp LCTL   &kp LALT   &kp LSFT   &kp LGUI         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp COLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │     _    │     [    │    { [   │     (    │      │    )     │   }  ]   │     ]    │    ; ;   │    \ |   │
-            &none      &kp UNDER   &kp LBKT  &kp LBRC    &kp KP_LPRN     &kp KP_RPRN &kp RBRC   &kp RBKT   &kp SEMI   &kp BSLH
+            &none      &kp UNDER   &kp LBKT  &kp LBRC    &kp KP_LPAR     &kp KP_RPAR &kp RBRC   &kp RBKT   &kp SEMI   &kp BSLH
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans    &trans  &lt 3 BKSP  &trans
         //                                 ╰──────────┴──────────╯      ╰──────────┴──────────╯
