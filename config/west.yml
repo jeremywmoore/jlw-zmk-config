@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.1.0
+      revision: 73ca365530bc79d03dc64d89adc03b4ccbeeb14e
       import: app/west.yml
     # Add the name of the repository as a project.
     - name: zmk-config-jlw
