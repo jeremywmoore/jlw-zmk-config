@@ -9,8 +9,8 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Home row mods macro
-#define HRML(k1,k2,k3) &ht LGUI  k1 &ht LALT k2  &ht LCTRL k3
-#define HRMR(k1,k2,k3) &ht RCTRL k1 &ht LALT k2  &ht RGUI  k3
+#define HRML(k1,k2,k3,k4) &ht LCTRL k1 &ht LALT  k2 &ht LSHFT k3  &ht LGUI  k4
+#define HRMR(k1,k2,k3,k4) &ht RGUI  k1 &ht RSHFT k2 &ht RALT  k3  &ht RCTRL k4
 
 / {
     behaviors {
@@ -95,17 +95,17 @@
         default_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮                      ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  Q       │  W       │  F       │  P       │  B       │                      │  J       │  L       │  U       │  Y       │ ' "      │
-            &kp Q      &kp W      &kp F      &kp P      &kp B                             &kp J      &kp L      &kp U      &kp Y      &as SQT
+        //│  Q       │  W       │  E       │  R       │  T       │                      │  Y       │  U       │  I       │  O       │ P        │
+            &kp Q      &kp W      &kp E      &kp R      &kp T                             &kp Y      &kp U      &kp I      &kp O      &as P
         //├──────────┼──────────┼──────────┼──────────┼──────────┤                      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  A       │  R       │  S       │  T       │  G       │                      │  M       │  N       │  E       │  I       │ O        │
-            HRML(A,     R,         S)         &kp T     &kp G                             &kp M      &kp N      HRMR(E,     I,        O)
+        //│  A       │  S       │  D       │  F       │  G       │                      │  H       │  J       │  K       │  L       │ ;        │
+             A,        HRML(S,     D,         F,         G)                              HRMR(H,      J,         K,         L)        &kp ;
         //├──────────┼──────────┼──────────┼──────────┼──────────┤                      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  Z       │  X       │  C       │  D       │  V       │                      │  K       │  H       │ , <      │ . >      │ / ?      │
-            &kp Z      &kp X      &kp C      &kp D      &kp V                             &kp K      &kp H      &as COMMA  &as DOT    &as FSLH
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤                      ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                            &lt 3 TAB  &mt LSHIFT BSPC   &kp C_MUTE      &lt 1 SPACE &lt 2 RET
-        //                                 ╰──────────┴──────────╯                      ╰──────────┴──────────╯
+        //│  Z       │  X       │  C       │  V       │  B       │                      │  N       │  M       │ , <      │ . >      │ / ?      │
+            &kp Z      &kp X      &kp C      &kp V      &kp B                             &kp N      &kp M      &as COMMA  &as DOT    &as FSLH
+        //╰──────────┴──────────┴──────────┼──────────┴──────────┤                      ├──────────┴──────────┼──────────┴──────────┴──────────╯
+                                  &lt 3 CAPS       &lt 2 RET          &kp C_MUTE             &lt 1 SPACE       &lt 2 RET
+        //                      ╰──────────┼─────────────────────╯                      ╰─────────────────────┼──────────╯
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
@@ -113,34 +113,16 @@
         num_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮      ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│  ` ~     │          │          │          │          │      │  \ |     │  - _     │  = +     │  [       │  ]       │
-            &as GRAVE  &none      &none      &none      &none             &as BSLH   &as MINUS  &as EQUAL  &as LBKT   &as RBKT
+        //│  1       │     2    │     3    │     4    │     5    │      │  6       │  7       │  8       │  9       │  0       │
+            &kp N1     &kp N2      &kp N3      &kp N4    &kp N5           &kp N6    &kp N7      &kp N8     &kp N9   &kp N0
         //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│  1 !     │  2 @     │  3 #     │  4 $     │  5 %     │      │  6 ^     │  7 &     │  8 *     │  9 (     │  0 )     │
-            &as N1     &as N2     &as N3     &as N4     &as N5            &as N6     &as N7     &as N8     &as N9     &as N0
+            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT         &kp CARET  &kp AMPS   &kp STAR   &kp LPRN   &kp RPRN
         //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
         //│          │          │          │          │          │      │          │          │          │          │          │
-            &none      &none      &none      &none      &none             &none      &none      &trans     &trans     &as SEMI
+            &none     &kp UNDER &kp KP_MINUS &kp PLUS  &kp KP_EQUAL       &none      &none      &none     &none      &none
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans    &trans  &trans     &trans
-        //                                 ╰──────────┴──────────╯      ╰──────────┴──────────╯
-            >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
-        };
-
-        fn_layer {
-            bindings = <
-        //╭──────────┬──────────┬──────────┬──────────┬──────────╮      ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │      │          │          │          │  F11     │  F12     │
-            &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none      &none      &none      &none      &kp F11    &kp F12
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  F1      │  F2      │  F3      │  F4      │  F5      │      │  F6      │  F7      │  F8      │  F9      │  F10     │
-            HRML(F1,    F2,        F3)       &kp F4     &kp F5            &kp F6     &kp F7     HRMR(F8,    F9,        F10)
-        //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │      │          │          │          │          │          │
-            &none      &none      &none      &none      &none             &none      &none      &none      &none      &none
-        //╰──────────┴──────────┴──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┴──────────┴──────────╯
-                                             &trans     &trans    &trans  &trans     &trans
+                                             &trans     &lt 3 TAB  &trans  &trans     &trans
         //                                 ╰──────────┴──────────╯      ╰──────────┴──────────╯
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -149,14 +131,32 @@
         nav_layer {
             bindings = <
         //╭──────────┬──────────┬──────────┬──────────┬──────────╮      ╭──────────┬──────────┬──────────┬──────────┬──────────╮
-        //│          │          │          │          │          │      │  HOME    │          │  UP      │          │  PG_UP   │
-            &none      &none  &kp LS(LG(N4)) &kp LS(LG(S)) &none         &kp HOME   &none      &kp UP     &none      &kp PG_UP
+        //│&as GRAVE │          │          │          │          │      │  HOME    │   PG_DN  │   PG_UP  │  END     │          │
+            &kp GRAVE  &sk LCTL  &sk LALT   &sk LSFT    &sk LGUI          &kp HOME    &kp PG_DN  &kp PG_UP   &kp END    &none
         //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│  LGUI    │  LALT    │  LCTRL   │          │          │      │  END     │  LEFT    │  DOWN    │  RIGHT   │  PG_DN   │
-            &kp LGUI   &kp LALT   &kp LCTRL  &none      &none             &kp END    &kp LEFT   &kp DOWN  &kp RIGHT  &kp PG_DN
+        //│  ESC     │  LCTL    │  LALT    │  LSFT    │  LGUI    │      │          │          │          │          │  :       │
+            &kp ESC     &kp LCTL   &kp LALT   &kp LSFT   &kp LGUI         &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp COLON
         //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
-        //│          │          │          │          │          │      │          │          │          │          │          │
-            &none      &none      &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP    &none      &none      &none      &none      &none
+        //│          │     _    │     [    │    { [   │     (    │      │    )     │   }  ]   │     ]    │    ; ;   │    \ |   │
+            &none      &kp UNDER   &kp LBKT  &kp LBRC    &kp KP_LPRN     &kp KP_RPRN &kp RBRC   &kp RBKT   &kp SEMI   &kp BSLH
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans    &trans  &lt 3 BKSP  &trans
+        //                                 ╰──────────┴──────────╯      ╰──────────┴──────────╯
+            >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        cmd_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮      ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │          │          │          │          │      │  F1      │   F2     │  F3      │    F4    │  Vol+    │
+            &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &none      &kp F1    &kp F2      &kp UP     &none      &kp C_VOL_UP
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │      │  F5      │  F6      │  F7      │  F8      │ C_PLAY   │
+            &none       &none     &none       &none      &none             &kp F5    &kp F6      &kp F7     &kp F8    &kp PG_DN
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │      │  F9      │  F10     │ F11      │ F12      │  Vol-    │
+            &none      &none      &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP    &kp F9      &kp F10   &kp F11    &kp F12    &kp C_VOL_DN
         //╰──────────┴──────────┴──────────┼──────────┼──────────┤      ├──────────┼──────────┼──────────┴──────────┴──────────╯
                                              &trans     &trans    &trans  &trans     &trans
         //                                 ╰──────────┴──────────╯      ╰──────────┴──────────╯
